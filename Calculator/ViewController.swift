@@ -9,17 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    var userStartedTyping = false
+    @IBOutlet weak var display: UILabel!
+    
+    @IBAction func appendDigit(sender: UIButton) {
+        
+        let digit = sender.currentTitle!
+        
+        if !userStartedTyping{
+            display.text = digit
+            userStartedTyping = true
+        }
+        else{
+            display.text = display.text! + digit
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
