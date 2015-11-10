@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     var userStartedTyping = false
     @IBOutlet weak var display: UILabel!
     
+    var opStack: [Double] = []
+    
     @IBAction func appendDigit(sender: UIButton) {
         
         let digit = sender.currentTitle!
@@ -27,13 +29,37 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func enter(sender: UIButton) {
-        //press enter
+    @IBAction func enter() {
+        userStartedTyping = false
+        opStack.append(displayValue)
+        print("opstack: " + opStack.description)
     }
-    
+
     
     @IBAction func operate(sender: UIButton) {
-        //operate
+        switch sender.currentTitle!{
+        case "+": performOperation { $0 * $1 }
+        case "-": performOperation { $1 - $0 }
+        case "÷": performOperation { $0 / $1 }
+        case "×": performOperation { $1 * $0 }
+        default: break
+        }
+    }
+    
+    func performOperation(operation: (Double, Double)->Double ){
+        if opStack.count >= 2{
+            displayValue = operation(opStack.removeLast(), opStack.removeLast())
+            enter()
+        }
+    }
+    
+    var displayValue: Double{
+        get{
+            return Double(display.text!)!
+        }
+        set{
+            display.text = "\(newValue)"
+        }
     }
 
 }
