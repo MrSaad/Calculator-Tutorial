@@ -25,6 +25,16 @@ class ViewController: UIViewController {
             display.text = display.text! + digit
         }
     }
+    
+    
+    @IBAction func enter(sender: UIButton) {
+        //press enter
+    }
+    
+    
+    @IBAction func operate(sender: UIButton) {
+        //operate
+    }
 
 }
 
