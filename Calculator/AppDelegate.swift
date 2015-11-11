@@ -8,6 +8,8 @@
 
 import UIKit
 
+var notificationSetting = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
