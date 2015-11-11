@@ -15,7 +15,6 @@ class SettingsTableViewController: UITableViewController, YesNoCellDelegate{
 
     }
 
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
